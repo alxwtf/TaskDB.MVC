@@ -1,0 +1,48 @@
+@model IEnumerable<TaskModel>;
+    @if(Model.Count()!=0){
+    <table>
+        <thead>
+            <th>Название Задачи</th>
+            <th>Тэги</th>
+            <th>Дата создания</th>
+            <th>Дата завершения</th>
+        </thead>
+        <tbody>
+            @foreach(var Task in Model)
+            {
+                <tr>
+                    <td>
+                        @Task.Name
+                    </td>
+                    <td>
+                        @Task.Tag
+                    </td>
+                    <td>
+                        @Task.CreationDate.ToString("dd.MM.yyyy")
+                        </td>
+                    <td>@{
+                        if(Task.Date!=null) {@(Task.Date.Value.ToString("dd.MM.yyyy"));}
+                        else {@("Дата окончания отсутствует");}
+                        }</td>
+                    <td><a asp-action="Update" class="btn btn-warning" asp-controller="Task" asp-route-id=@Task.id>Обновить</a></td>
+                    <td><a asp-action="Delete" class="btn btn-danger" asp-controller="Task" asp-route-id=@Task.id>Удалить</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    }
+    else {
+        <p>Задач на данный момент нет</p>
+    }
+    <div><a class="btn btn-success"type="button" asp-action="Create" asp-controller=task>Добавить запись</a></div>
+<style>
+    form{
+        margin-top:12px;
+    }
+    tr,p{
+        text-align:center;
+    }
+    tr,td,th{
+        border:solid black 1px;
+    }
+</style>

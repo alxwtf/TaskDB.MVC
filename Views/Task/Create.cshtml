@@ -1,0 +1,38 @@
+@model TaskModel;
+
+
+<form asp-action=AddTask asp-controller=Task>
+<div class=container>
+    <input asp-for=id hidden/>
+    <div class=field>
+        <label asp-for=Name ></label>
+        <input asp-for=Name />
+    </div>
+    <div class=field>
+        <label asp-for=Description ></label>
+        <input asp-for=Description />
+    </div>
+    <div class=field>
+        <label asp-for=Tag ></label>
+        <input asp-for=Tag />
+    </div>
+
+<div class=field>
+<label asp-for=CreationDate></label>
+<input asp-for=CreationDate readonly  value=@DateTime.Now.Date.ToString("dd.MM.yyyy") />
+</div>
+<div class=field>
+<label asp-for=Date></label>
+<input asp-for=Date />
+</div>
+</div>
+<button>Добавить запись</button>
+</form>
+
+
+<style>
+    label{
+        display:inline-block;
+        width:100px
+    }
+</style>

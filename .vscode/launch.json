@@ -9,6 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
+            "requireExactSource": false,
             "program": "${workspaceFolder}/bin/Debug/netcoreapp2.2/TaskDB.MVC.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
@@ -26,9 +27,11 @@
         },
         {
             "name": ".NET Core Attach",
+            "requireExactSource": false,
             "type": "coreclr",
             "request": "attach",
             "processId": "${command:pickProcess}"
+            
         }
     ]
 }
